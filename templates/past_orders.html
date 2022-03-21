@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>All your previous orders!</h1>
+
+    <table>
+
+        <tr>
+            <th>Order id:</th>
+            <th>Order Type:</th>
+            <th>List of Books Brought</th>
+            <th>List of Quantities brought</th>
+            <th>Total Price of Order</th>
+            <th>Total Rent of Order</th>
+        </tr>
+        {% for order in previous_orders %}
+        <tr>
+            <td>{{ order["order_id"] }}</td>
+            {% if order["total_price"] != None %}
+                <td>Purchase</td>
+            {% elif order["total_rent"] != None %}
+                <td>Rent</td>
+            {% endif %}
+            <td>{{ order["name_str"] }}</td>
+            <td>{{ order["quantity_str"] }}</td>
+            <td>{{ order["total_price"] }}</td>
+            <td>{{ order["total_rent"] }}</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

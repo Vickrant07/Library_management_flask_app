@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+<h2>Please login with customer id!</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.customer_id.label }}
+        {{ form.customer_id() }}
+        {% for error in form.customer_id.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+    </form>
+    
+{% endblock %}

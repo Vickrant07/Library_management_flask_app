@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>All registered customers in the Library</h1>
+    <table>
+
+        {% for customer in customers %}
+        <tr>
+            <td>{{ customer["customer_id"] }}</td>
+            <td><a href="{{ url_for('remove_customer', customerid=customer['customer_id']) }}">Remove Customer</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

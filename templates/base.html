@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Lincoln Online Library</title>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    </head>
+    <body>
+        <header>
+            <h1>Lincoln Online Library</h1>
+            <p>Rent and borrow or buy books online!</p>
+        </header>
+        <nav>
+            <ol>
+            {% if g.customer %}
+                <li>Customer id: {{ g.customer }}</li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('cart') }}">Your cart</a></li>
+                <li><a href="{{ url_for('past_orders') }}">Your past orders</a></li>
+            {% else %}
+                <li><a href="{{ url_for('register') }}">Customer Register</a></li>
+                <li><a href="{{ url_for('login') }}">Customer Login</a></li>
+            {% endif %}
+            </ol>
+            <br />
+            <ol>
+            {% if g.admin %}
+                <li>Admin id: {{ g.admin }}</li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('manage_stock') }}">Manage Stock</a></li>
+                <li><a href="{{ url_for('manage_customers') }}">Manage Customers</a></li>
+            {% else %}
+                <li><a href="{{ url_for('admin_login') }}">Go to Admin Login</a></li>
+                <br />
+            {% endif %}
+            </ol>
+        </nav>
+        <main>
+            <section>
+                {% block main_content %}
+                
+                {% endblock %}
+            </section>
+            <br />
+        </main>
+    </body>
+    <footer>
+        &copy; Lincoln Online Library
+    </footer>
+</html>

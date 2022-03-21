@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>All the Books in the Library</h1>
+    <table>
+
+        {% for book in books %}
+        <tr>
+            <td>{{ book["book_id"] }}</td>
+            <td>{{ book["name"] }}</td>
+            <td>{{ book["author"] }}</td>
+            <td>Stock Available: {{ book["stock"] }} unit(s)</td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <br />
+    <h2>Manage Stock in the Library!</h2>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.book_id.label }}
+        {{ form.book_id() }}
+        <br />
+        {{ form.new_quantity_to_add.label }}
+        {{ form.new_quantity_to_add() }}
+        <br />
+        {{ form.submit() }}
+    </form>
+
+{% endblock %}

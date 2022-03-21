@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Your Cart</h1>
+    {% if cart %}
+        <p><a href="{{ url_for('books') }}">Explore more Books!</a></p>
+        <p><a href="{{ url_for('empty_cart') }}">Empty Cart</a></p>
+        <table>
+            {% for book_id in cart %}
+            <tr>
+                <td><strong>Name:</strong> {{ names[book_id] }}</td>
+                <td><strong>Quantity:</strong> {{ cart[book_id] }}</td>
+                <td><strong>Rent:</strong> {{ rents[book_id] }}</td>
+                <td><strong>Price:</strong> {{ prices[book_id] }}</td>
+                <td><a href="{{ url_for('remove_item', book_id=book_id) }}">Remove item</a></td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2"></td>
+                <td><strong>Total estimated Rent: {{ total_rent }} </strong></td>
+                <td><strong>Total estimated Price: {{ total_price }} </strong></td>
+            </tr>
+        </table>
+        <p><a href="{{ url_for('checkout_rent') }}">Proceed to Rent & checkout</a></p>
+        <p><a href="{{ url_for('checkout_buy') }}">Proceed to Buy & checkout</a></p>
+    {% else %}
+        <p>Your cart is empty!</p>
+        <p><a href="{{ url_for('books') }}">Explore all the Books!</a></p>  
+    {% endif %}
+
+{% endblock %}
+
+
+

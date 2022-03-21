@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h2>Secret/Hint: Please note admin id starts with #</h2>
+    <p><a href="{{ url_for('register_admin') }}">Register Admin</a></p>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.admin_id.label }}
+        {{ form.admin_id() }}
+        {% for error in form.admin_id.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+    </form>
+    
+{% endblock %}

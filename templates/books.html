@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Our Books Archive</h1>
+    <table>
+        {% for book in books %}
+        <tr>
+            <td>{{ book["book_id"] }}</td>
+            <td>
+                <img src = "{{ url_for('static', filename=book['image_name']) }}" alt = "{{ book['name'] }}" />
+                <br />
+                {{ book["image_attribute"]}}
+            </td>
+            <td>{{ book["name"] }}</td>
+            <td>{{ book["price"] }}</td>
+            <td>
+                <a href="{{ url_for('book', book_id=book['book_id']) }}">
+                    See Details</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}

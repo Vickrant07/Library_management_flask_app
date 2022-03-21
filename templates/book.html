@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>{{ book["name"] }}</h1>
+    <img src = "{{ url_for('static', filename=book['image_name']) }}" alt = "{{ book['name'] }}" />
+    <p>{{ book["image_attribute"]}}</p>
+    <p>Price: {{ book["price"] }}</p>
+    <p>Author: {{ book["author"] }}</p>
+    <p>Stock Available: {{ book["stock"] }} unit(s)</p>
+
+    <p>{{ book["description"] }}</p>
+    <p>
+        <a href="{{ url_for('add_to_cart', book_id=book['book_id']) }}">
+            Add to Cart</a>
+    </p>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+:root{
+    background-color: beige;
+    max-width: 80%;
+    margin: auto;
+    padding: 10px;
+}
+
+header {
+    display: block;
+    align-items: center;
+}
+
+ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+table, th, td {
+    border: 1px solid;
+    align-items: center;
+}
+
+table img {
+    width: 30%;
+}
+
+h1 + img {
+    width: 150pt;
+}

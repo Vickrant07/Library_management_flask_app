@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+
+    <h1>Make payment for your Order!</h1>
+    <table>
+        {% for book_id in cart %}
+        <tr>
+            <td><strong>Name:</strong> {{ names[book_id] }}</td>
+            <td><strong>Quantity:</strong> {{ cart[book_id] }}</td>
+            <td><strong>Rent:</strong> {{ rents[book_id] }}</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="2"></td>
+            <td><strong>Total estimated Rent: {{ total_rent }} </strong></td>
+        </tr>
+    </table>
+    <p><a href="{{ url_for('rent_order_placed') }}">Pay & Rent</a></p>
+
+{% endblock %}

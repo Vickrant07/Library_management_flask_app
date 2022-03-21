@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    <h2>Please register your issued Admin id here!</h2>
+    <p><strong>Secret/Hint:</strong> You cannot register without # as first character e.g. #vickrant</p>
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        {{ form.admin_id.label }}
+        {{ form.admin_id() }}
+        {% for error in form.admin_id.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.password.label }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.password2.label }}
+        {{ form.password2() }}
+        {% for error in form.password2.errors %}
+            {{ error }}
+        {% endfor %}
+        <br />
+        {{ form.submit() }}
+    </form>
+
+{% endblock %}
